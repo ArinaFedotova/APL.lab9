@@ -1,0 +1,17 @@
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/bin/Debug/net7.0/DatabaseContext.deps.json
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/bin/Debug/net7.0/DatabaseContext.runtimeconfig.json
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/bin/Debug/net7.0/DatabaseContext.dll
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/bin/Debug/net7.0/DatabaseContext.pdb
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/bin/Debug/net7.0/DatabaseModels.dll
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/bin/Debug/net7.0/DatabaseModels.pdb
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Debug/net7.0/DatabaseContext.csproj.AssemblyReference.cache
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Debug/net7.0/DatabaseContext.GeneratedMSBuildEditorConfig.editorconfig
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Debug/net7.0/DatabaseContext.AssemblyInfoInputs.cache
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Debug/net7.0/DatabaseContext.AssemblyInfo.cs
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Debug/net7.0/DatabaseContext.csproj.CoreCompileInputs.cache
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Debug/net7.0/DatabaseContext.csproj.CopyComplete
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Debug/net7.0/DatabaseContext.dll
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Debug/net7.0/refint/DatabaseContext.dll
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Debug/net7.0/DatabaseContext.pdb
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Debug/net7.0/DatabaseContext.genruntimeconfig.cache
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Debug/net7.0/ref/DatabaseContext.dll

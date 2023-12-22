@@ -1,0 +1,14 @@
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/bin/Host=localhost/net7.0/DatabaseModels.deps.json
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/bin/Host=localhost/net7.0/DatabaseModels.runtimeconfig.json
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/bin/Host=localhost/net7.0/DatabaseModels.dll
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/bin/Host=localhost/net7.0/DatabaseModels.pdb
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/obj/Host=localhost/net7.0/DatabaseModels.csproj.AssemblyReference.cache
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/obj/Host=localhost/net7.0/DatabaseModels.GeneratedMSBuildEditorConfig.editorconfig
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/obj/Host=localhost/net7.0/DatabaseModels.AssemblyInfoInputs.cache
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/obj/Host=localhost/net7.0/DatabaseModels.AssemblyInfo.cs
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/obj/Host=localhost/net7.0/DatabaseModels.csproj.CoreCompileInputs.cache
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/obj/Host=localhost/net7.0/DatabaseModels.dll
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/obj/Host=localhost/net7.0/refint/DatabaseModels.dll
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/obj/Host=localhost/net7.0/DatabaseModels.pdb
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/obj/Host=localhost/net7.0/DatabaseModels.genruntimeconfig.cache
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/obj/Host=localhost/net7.0/ref/DatabaseModels.dll

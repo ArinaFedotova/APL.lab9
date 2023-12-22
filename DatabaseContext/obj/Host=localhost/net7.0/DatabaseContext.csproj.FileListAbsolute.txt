@@ -1,0 +1,5 @@
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Host=localhost/net7.0/DatabaseContext.csproj.AssemblyReference.cache
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Host=localhost/net7.0/DatabaseContext.GeneratedMSBuildEditorConfig.editorconfig
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Host=localhost/net7.0/DatabaseContext.AssemblyInfoInputs.cache
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Host=localhost/net7.0/DatabaseContext.AssemblyInfo.cs
+/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/Host=localhost/net7.0/DatabaseContext.csproj.CoreCompileInputs.cache

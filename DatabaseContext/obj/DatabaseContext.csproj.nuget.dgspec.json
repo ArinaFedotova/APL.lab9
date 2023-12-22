@@ -1,0 +1,150 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/DatabaseContext.csproj": {}
+  },
+  "projects": {
+    "/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/DatabaseContext.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/DatabaseContext.csproj",
+        "projectName": "DatabaseContext",
+        "projectPath": "/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/DatabaseContext.csproj",
+        "packagesPath": "/Users/arinafedotova/.nuget/packages/",
+        "outputPath": "/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseContext/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/arinafedotova/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/DatabaseModels.csproj": {
+                "projectPath": "/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/DatabaseModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.403/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/DatabaseModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/DatabaseModels.csproj",
+        "projectName": "DatabaseModels",
+        "projectPath": "/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/DatabaseModels.csproj",
+        "packagesPath": "/Users/arinafedotova/.nuget/packages/",
+        "outputPath": "/Users/arinafedotova/RiderProjects/DB_Doctors/DatabaseModels/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/arinafedotova/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.403/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
