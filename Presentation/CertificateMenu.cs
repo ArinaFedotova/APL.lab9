@@ -1,4 +1,6 @@
 using Core;
+using Core.DTO;
+using Core.Handler;
 
 namespace Presentation;
 
@@ -21,7 +23,8 @@ public class CertificateMenu
             Console.WriteLine("3. Delete Certificate");
             Console.WriteLine("4. Display a List of Certificate");
             Console.WriteLine("5. Display Latest Doctor's Certificate");
-            Console.WriteLine("6. Back to Main Menu");
+            Console.WriteLine("6. Get Specialization Name By Certificate");
+            Console.WriteLine("7. Back to Main Menu");
 
             Console.Write("Select an action: ");
             string choice = Console.ReadLine();
@@ -47,8 +50,12 @@ public class CertificateMenu
                 case "5":
                     LatestCertificate();
                     break;
-
+                
                 case "6":
+                    GetSpecializationNameByCertificate();
+                    break;
+
+                case "7":
                     return;
 
                 default:
@@ -58,10 +65,12 @@ public class CertificateMenu
         }
     }
     
-    public void AddCertificate()
+    public void AddCertificate(int doctorId = -1)
     {
-        Console.WriteLine("\nEnter Certificate's description Name: ");
+        Console.WriteLine("\nEnter Certificate's Description: ");
         string description = Console.ReadLine();
+        while (description == null)
+            description = Console.ReadLine();
         
         Console.WriteLine("\nEnter when Certificate was given date (YYYY-MM-DD):");
         DateTime creationDate;
@@ -70,84 +79,64 @@ public class CertificateMenu
             Console.WriteLine("Invalid input. Please enter a valid date (YYYY-MM-DD):");
         }
         
-        Console.WriteLine("\nEnter Doctor ID: ");
-        int doctorId;
-        while (!int.TryParse(Console.ReadLine(), out doctorId))
+        if (doctorId == -1)
         {
-            Console.WriteLine("Invalid input. Please enter a valid integer for doctor ID:");
+            Console.WriteLine("\nEnter Doctor ID: ");
+            while (!int.TryParse(Console.ReadLine(), out doctorId))
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer for doctor ID:");
+            }
         }
-        _workWithData.AddCertificateWithDoctorId(creationDate, description, doctorId);
-        Console.WriteLine("Certificate add operation completed.");
-    }
-    
-    public void AddCertificate(int doctorId)
-    {
-        Console.WriteLine("\nEnter Certificate's description Name: ");
-        string description = Console.ReadLine();
-        
-        Console.WriteLine("\nEnter when Certificate was given date (YYYY-MM-DD):");
-        DateTime creationDate;
-        while (!DateTime.TryParse(Console.ReadLine(), out creationDate))
-        {
-            Console.WriteLine("Invalid input. Please enter a valid date (YYYY-MM-DD):");
-        }
-        _workWithData.AddCertificateWithDoctorId(creationDate, description, doctorId);
+
+        _workWithData.AddCertificate(ConverterDTO.
+            ToDto(certificateDoctorId: doctorId, certificateDate: creationDate, certificateDescription: description));
         Console.WriteLine("Certificate add operation completed.");
     }
 
     private void DeleteCertificate()
     {
         Console.Write("\nEnter Certificate ID to delete: ");
-        string certificateId = Console.ReadLine();
-        _workWithData.DeleteCertificate(certificateId);
+        int certificateId;
+        while (!int.TryParse(Console.ReadLine(), out certificateId))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid integer for doctor ID:");
+        }
+        
+        _workWithData.DeleteCertificate(ConverterDTO.ToDto(certificateId: certificateId));
         Console.WriteLine("Certificate delete operation completed.");
     }
 
     private void UpdateCertificate()
     {
         Console.Write("\nEnter Certificate ID to update: ");
-        string tmpId = Console.ReadLine();
-        
+        int certificateId;
+        while (!int.TryParse(Console.ReadLine(), out certificateId))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid integer for certificate ID:");
+        }
 
-        Console.WriteLine("\nChoose an option:");
-        Console.WriteLine("1. Update Description");
-        Console.WriteLine("2. Update Date");
-        Console.WriteLine("3. Update Doctor");
+        Console.Write("\nEnter new Description: ");
+        string newDescription = Console.ReadLine();
+        while (newDescription == null)
+            newDescription = Console.ReadLine();
         
-        Console.Write("Select an action: ");
-        int choice;
-        while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 3)
+        Console.WriteLine("\nEnter new creation date (YYYY-MM-DD):");
+        DateTime newCreationDate;
+        while (!DateTime.TryParse(Console.ReadLine(), out newCreationDate))
         {
-            Console.WriteLine("Invalid choice. Please enter 1 or 2:");
+            Console.WriteLine("Invalid input. Please enter a valid date (YYYY-MM-DD):");
         }
-        
-        if (choice == 1)
+            
+        Console.Write("\nEnter new Doctor ID: ");
+        int doctorId;
+        while (!int.TryParse(Console.ReadLine(), out doctorId))
         {
-            Console.Write("\nEnter new Description: ");
-            string newDescription = Console.ReadLine();
-            _workWithData.UpdateCertificateDescription(newDescription, tmpId);
-            Console.WriteLine("Certificate Description update operation completed.");
+            Console.WriteLine("Invalid input. Please enter a valid integer for doctor ID:");
         }
-        else if (choice == 2)
-        {
-            Console.WriteLine("\nEnter new creation date (YYYY-MM-DD):");
-            DateTime newCreationDate;
-            while (!DateTime.TryParse(Console.ReadLine(), out newCreationDate))
-            {
-                Console.WriteLine("Invalid input. Please enter a valid date (YYYY-MM-DD):");
-            }
-            _workWithData.UpdateCertificateDate(newCreationDate, tmpId);
-            Console.WriteLine("Certificate Date update operation completed.");
-        }
-        else
-        {
-            Console.Write("\nEnter new Doctor ID: ");
-            if (int.TryParse(Console.ReadLine(), out int newDoctorId))
-            {
-                _workWithData.UpdateCertificateDoctorWithId(newDoctorId, tmpId);
-                Console.WriteLine("Certificate Doctor update operation completed.");
-            }
-        }
+        _workWithData.UpdateCertificate(ConverterDTO.ToDto
+        (certificateId : certificateId, certificateDescription : newDescription,
+                certificateDate : newCreationDate, certificateDoctorId: doctorId));
+        Console.WriteLine("Certificate Doctor update operation completed.");
     }
 
     private void LatestCertificate()
@@ -155,22 +144,27 @@ public class CertificateMenu
         Console.Write("\nEnter Doctor ID: ");
         if (int.TryParse(Console.ReadLine(), out int doctorId)) 
         {
-            _workWithData.FindLastCertificateDoctor(doctorId);
+            _workWithData.FindLastCertificateDoctor(ConverterDTO.ToDTO(doctorId: doctorId));
             Console.WriteLine("Latest Doctor's Certificate obtaining operation completed.");
         }
         else
             Console.WriteLine("Invalid Doctor ID. Please enter a valid integer.");
     }
+    
+    private void GetSpecializationNameByCertificate()
+    {
+        Console.WriteLine("Enter Certificate ID: ");
+        if (int.TryParse(Console.ReadLine(), out var certId))
+            throw new ArgumentException("Error. Please enter correct Certificate ID");
+        
+        _workWithData.GetSpecializationNameByCertificate
+            (ConverterDTO.ToDto(certificateId: certId));
+    }
+    
+    
 
     private void PrintCertificates()
     {
-        var certificates = _workWithData.TakeAllCertificates();
-        Console.WriteLine("\nCertificates: ");
-        foreach (var certificate in certificates)
-        {
-            Console.WriteLine($"{certificate.ID}. {certificate.Date}, " +
-                              $"Specialization: {certificate.Description}, " +
-                              $"Doctor: {certificate.DoctorName}");
-        }
+         _workWithData.TakeAllCertificates();
     }
 }

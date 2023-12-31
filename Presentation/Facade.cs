@@ -6,7 +6,7 @@ namespace Presentation;
 public class Facade
 {
     private readonly DatabaseContext.DataBaseContext _dataBaseContext;
-    private readonly DBCore _dataBaseCore;
+    private readonly Repository _dataBaseCore;
     private readonly WorkWithData _workWithData;
     private readonly DoctorMenu _doctorMenu;
     private readonly SpecializationMenu _specializationMenu;
@@ -15,7 +15,7 @@ public class Facade
     public Facade()
     {
         _dataBaseContext = new DataBaseContext();
-        _dataBaseCore = new DBCore(_dataBaseContext);
+        _dataBaseCore = new Repository(_dataBaseContext);
         _workWithData = new WorkWithData(_dataBaseCore);
         _certificateMenu = new CertificateMenu(_workWithData);
         _doctorMenu = new DoctorMenu(_workWithData, _certificateMenu);

@@ -1,4 +1,6 @@
 using Core;
+using Core.DTO;
+using Core.Handler;
 
 namespace Presentation;
 
@@ -22,8 +24,7 @@ public class DoctorMenu
             Console.WriteLine("2. Update Doctor");
             Console.WriteLine("3. Delete Doctor");
             Console.WriteLine("4. Display a List of Doctors");
-            Console.WriteLine("5. Number of Doctors with Specialization");
-            Console.WriteLine("6. Back to Main Menu");
+            Console.WriteLine("5. Back to Main Menu");
 
             Console.Write("Select an action: ");
             string choice = Console.ReadLine();
@@ -47,10 +48,6 @@ public class DoctorMenu
                     break;
                 
                 case "5":
-                    GetNumOfDoctors();
-                    break;
-                
-                case "6":
                     return;
 
                 default:
@@ -60,103 +57,89 @@ public class DoctorMenu
         }
     }
     
-    public void AddDoctor()
+    public void AddDoctor(int specializationId = -1)
     {
         Console.WriteLine("\nEnter Doctor's Name: ");
-        string name = Console.ReadLine();
+        string name = null;
+        while (name == null)
+            name = Console.ReadLine();
 
-        Console.WriteLine("\nEnter Specialization ID: ");
-        int specializationId;
-        while (!int.TryParse(Console.ReadLine(), out specializationId))
+        if (specializationId == -1)
         {
-            Console.WriteLine("Invalid input. Please enter a valid integer for specialization ID:");
+            Console.WriteLine("\nEnter Specialization ID: ");
+            while (!int.TryParse(Console.ReadLine(), out specializationId))
+                Console.WriteLine("Invalid input. Please enter a valid integer for specialization ID:");
         }
-        _workWithData.AddDoctorWithSpecializationId(name, specializationId);
-        Console.WriteLine("Doctor add operation completed.");
-        Console.WriteLine($"Doctor {name} does not have any certificates, add at least one");
-        var newDoctor = _workWithData.FindDoctorByName(name);
-        if (newDoctor.Count != 0)
-            _certificateMenu.AddCertificate(newDoctor[0].ID);
-    }
-    
-    public void AddDoctor(int specializationId)
-    {
-        Console.WriteLine("\nEnter Doctor's Name: ");
-        string name = Console.ReadLine();
+        DoctorDTO? doctor = _workWithData.AddDoctor
+            (ConverterDTO.ToDTO(doctorName: name, doctorSpecializationId: specializationId));
+        if(doctor == null)
+            return;
         
-        _workWithData.AddDoctorWithSpecializationId(name, specializationId);
-        Console.WriteLine("Doctor add operation completed.");
-        Console.WriteLine($"Doctor {name} does not have any certificates, add at least one");
-        var newDoctor = _workWithData.FindDoctorByName(name);
-        if (newDoctor.Count != 0)
-            _certificateMenu.AddCertificate(newDoctor[0].ID);
+        bool noDependency = true;
+        foreach (var cert in _workWithData.TakeAllCertificates())
+        {
+            if (cert.DoctorID == doctor.ID)
+            {
+                noDependency = false;
+                break;
+            }
+        }
+        if (noDependency && doctor.ID != -1)
+        {
+            Console.WriteLine($"Doctor does not have any certificates, add at least one");
+            _certificateMenu.AddCertificate(doctor.ID);
+        }
     }
 
     private void DeleteDoctor()
     {
         Console.Write("\nEnter Doctor ID to delete: ");
-        string doctorId = Console.ReadLine();
-        _workWithData.DeleteDoctor(doctorId);
+        int doctorId;
+        while (!int.TryParse(Console.ReadLine(), out doctorId))
+            Console.WriteLine("Invalid input. Please enter a valid integer for specialization ID:");
+        _workWithData.DeleteDoctor(ConverterDTO.ToDTO(doctorId: doctorId));
         Console.WriteLine("Doctor delete operation completed.");
     }
 
     private void UpdateDoctor()
     {
         Console.Write("\nEnter Doctor ID to update: ");
-        string tmpId = Console.ReadLine();
+        int doctorId;
+        while (!int.TryParse(Console.ReadLine(), out doctorId))
+            Console.WriteLine("Invalid input. Please enter a valid integer for doctor ID:");
 
-        Console.WriteLine("\nChoose an option:");
-        Console.WriteLine("1. Update name");
-        Console.WriteLine("2. Update specialization");
+        Console.Write("\nEnter new name: ");
+        string newName = Console.ReadLine();
+        while (newName == null)
+            newName = Console.ReadLine();
         
-        Console.Write("Select an action: ");
-        int choice;
-        while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 2)
-        {
-            Console.WriteLine("Invalid choice. Please enter 1 or 2:");
-        }
-        
-        if (choice == 1)
-        {
-            Console.Write("\nEnter new name: ");
-            string newName = Console.ReadLine();
-            _workWithData.UpdateDoctorName(newName, tmpId);
-            Console.WriteLine("Doctor name update operation completed.");
-        }
-        else
-        {
-            Console.Write("\nEnter new Specialization ID: ");
-            if (int.TryParse(Console.ReadLine(), out int newSpecializationId))
-            {
-                _workWithData.UpdateDoctorSpecializationWithId(newSpecializationId, tmpId);
-                Console.WriteLine("Doctor specialization update operation completed.");
-            }
-        }
+        Console.Write("\nEnter new Specialization ID: ");
+        int specId;
+        while (!int.TryParse(Console.ReadLine(), out specId))
+            Console.WriteLine("Invalid input. Please enter a valid integer for specialization ID:");
+
+        _workWithData.UpdateDoctor(ConverterDTO.ToDTO
+            (doctorId: doctorId, doctorName: newName, doctorSpecializationId: specId));
+        Console.WriteLine("Doctor specialization update operation completed.");
     }
 
-    private void GetNumOfDoctors()
-    {
-        Console.Write("\nEnter Doctor's Specialization ID: ");
-        string tmpId = Console.ReadLine();
-        var res = _workWithData.CountAllDoctorsWithSpecialization(tmpId);
-
-        if (res > -1)
-        {
-            int.TryParse(tmpId, out int id);
-            Console.WriteLine($"Number of Doctors With Specialization " +
-                              $"{_workWithData.FindSpecializationWithId(id)}: {res} ");
-        }
-    }
+    // private void GetNumOfDoctors()
+    // {
+    //     Console.Write("\nEnter Doctor's Specialization ID: ");
+    //     string tmpId = Console.ReadLine();
+    //     var res = _workWithData.CountAllDoctorsWithSpecialization(tmpId);
+    //
+    //     if (res > -1)
+    //     {
+    //         int.TryParse(tmpId, out int id);
+    //         Console.WriteLine($"Number of Doctors With Specialization " +
+    //                           $"{_workWithData.FindSpecializationWithId(id)}: {res} ");
+    //     }
+    // }
 
     private void PrintDoctors()
     {
-        var doctors = _workWithData.TakeAllDoctors();
-        
-        Console.WriteLine("\nDoctors: ");
-        foreach (var doctor in doctors)
-        {
-            Console.WriteLine($"{doctor.ID}. {doctor.Name}, Specialization: {doctor.SpecializationName}");
-        }
+         _workWithData.TakeAllDoctors();
     }
 
 }
